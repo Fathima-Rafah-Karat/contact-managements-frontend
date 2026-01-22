@@ -152,10 +152,10 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
         filteredData.map((item, index) => (
           <div
             key={index}
-            className="bg-white w-80 h-80 border border-gray-200 rounded-lg hover:scale-105 p-4 flex flex-col group "
+            className=" relative bg-white w-80 h-80 border border-gray-200 rounded-lg hover:scale-105 p-4 flex flex-col group  "
           >
             {/* Dropdown button */}
-            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-2 right-2 z-50">
               <button
                 className="px-4 py-1 rounded text-lg m-5 hover:bg-green-700"
                 onClick={() =>
@@ -166,27 +166,28 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
               </button>
 
               {openDropdown === index && (
-                <div className="absolute right-0 mt-1 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-10">
-                  <div
-                    className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded-lg m-1"
-                    onClick={() => edit(item)}
-                  >
-                    Edit Contact
-                  </div>
-                  <div
-                    className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded-lg m-1"
-                    onClick={() => view(item)}
-                  >
-                    View Details
-                  </div>
-                  <div
-                    className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded-lg m-1 text-red-500"
-                    onClick={() => confirmDelete(item._id)}
-                  >
-                    Delete
-                  </div>
-                </div>
-              )}
+  <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg shadow-lg z-50">
+    <div
+      className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded"
+      onClick={() => edit(item)}
+    >
+      Edit Contact
+    </div>
+    <div
+      className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded"
+      onClick={() => view(item)}
+    >
+      View Details
+    </div>
+    <div
+      className="px-4 py-2 hover:bg-green-700 cursor-pointer rounded text-red-500"
+      onClick={() => confirmDelete(item._id)}
+    >
+      Delete
+    </div>
+  </div>
+)}
+
             </div>
 
             {/* Contact info */}
@@ -369,3 +370,4 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
 };
 
 export default Detailbox;
+
