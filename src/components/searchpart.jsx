@@ -9,55 +9,66 @@ const Search = ({ search, setSearch, setActiveTab }) => {
   };
 
   return (
-    <div className="bg-white h-25 rounded-lg p-2 ml-12 mr-12 mb-10 flex justify-between border border-gray-200">
-      {/* Search  */}
-      <div className="bg-gray-100 m-5 rounded-lg p-3 flex items-center gap-2 w-full ">
-        <img src="search.svg" alt="search" />
-        <input
-          className="w-full bg-transparent outline-none"
-          type="text"
-          placeholder="Search Contacts by name, email, phone-number"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </div>
+  <div className="bg-white rounded-lg p-4 mx-4 md:mx-12 mb-10 border border-gray-200
+                flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-      {/* All Button */}
-      <button
-        className={`rounded-2xl p-3 m-5 ${
-          selectedButton === "All"
-            ? "bg-red-400 text-white" // active color
-            : "bg-gray-100 hover:bg-red-400"
-        }`}
-        onClick={() => handleClick("All")}
-      >
-        All
-      </button>
+  {/* Search */}
+  <div className="bg-gray-100 rounded-lg p-3 flex items-center gap-2 w-full md:flex-1">
+    <img src="search.svg" alt="search" className="w-5 h-5" />
+    <input
+      className="w-full bg-transparent outline-none text-sm md:text-base"
+      type="text"
+      placeholder="Search Contacts by name, email, phone-number"
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+    />
+  </div>
 
-      {/* Active Button */}
-      <button
-        className={`rounded-2xl p-3 m-5 ${
-          selectedButton === "Active"
-            ? "bg-green-400 text-white"
-            : "bg-gray-100 hover:bg-green-400"
-        }`}
-        onClick={() => handleClick("Active")}
-      >
-        Active
-      </button>
+  {/* Buttons */}
+  <div className="flex gap-3 w-full md:w-auto
+                justify-center md:justify-end
+                overflow-x-auto md:overflow-visible">
 
-      {/*  Month Button */}
-      <button
-        className={`rounded-2xl p-3 m-5 ${
-          selectedButton === "Month"
-            ? "bg-yellow-400 text-white"
-            : "bg-gray-100 hover:bg-yellow-400"
-        }`}
-        onClick={() => handleClick("Month")}
-      >
-        Month
-      </button>
-    </div>
+    
+    {/* All */}
+    <button
+      className={`rounded-2xl px-4 py-2 text-sm md:text-base whitespace-nowrap ${
+        selectedButton === "All"
+          ? "bg-red-400 text-white"
+          : "bg-gray-100 hover:bg-red-400"
+      }`}
+      onClick={() => handleClick("All")}
+    >
+      All
+    </button>
+
+    {/* Active */}
+    <button
+      className={`rounded-2xl px-4 py-2 text-sm md:text-base whitespace-nowrap ${
+        selectedButton === "Active"
+          ? "bg-green-400 text-white"
+          : "bg-gray-100 hover:bg-green-400"
+      }`}
+      onClick={() => handleClick("Active")}
+    >
+      Active
+    </button>
+
+    {/* Month */}
+    <button
+      className={`rounded-2xl px-4 py-2 text-sm md:text-base whitespace-nowrap ${
+        selectedButton === "Month"
+          ? "bg-yellow-400 text-white"
+          : "bg-gray-100 hover:bg-yellow-400"
+      }`}
+      onClick={() => handleClick("Month")}
+    >
+      Month
+    </button>
+
+  </div>
+</div>
+
   );
 };
 
