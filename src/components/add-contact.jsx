@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const AddContact = ({ open, contacts, setContacts, onClose, onSuccess }) => {
   const initialFormData = {
     name: "",
@@ -40,7 +41,7 @@ const AddContact = ({ open, contacts, setContacts, onClose, onSuccess }) => {
       data.append("active", formData.Active);
       if (formData.image) data.append("image", formData.image);
 
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         body: data,
       });
