@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
   // const [data, setData] = useState([]);
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -21,7 +23,7 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
   useEffect(() => {
     const fetchContacts = async () => {
       try {
-        let url = "http://localhost:5000/api/contact";
+        let url = `${API_URL}/api/contact`;
 
         if (search.trim() !== "") {
           url += `?name=${encodeURIComponent(search)}`;
@@ -66,7 +68,7 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/contact/${deleteContactId}`,
+        `${API_URL}/api/contact/${deleteContactId}`,
         { method: "DELETE" }
       );
       const result = await response.json();
@@ -117,7 +119,7 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
       }
 
       const response = await fetch(
-        `http://localhost:5000/api/contact/${editcontact._id}`,
+        `${API_URL}/api/contact/${editcontact._id}`,
         {
           method: "PUT",
           body: formData,
@@ -191,7 +193,7 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
             <div className="mt-10 flex flex-col items-center">
               {item.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${item.image}`}
+                  src={`${API_URL}/uploads/${item.image}`}
                   className="rounded-full w-20 h-20 mb-2"
                 />
               )}
@@ -218,7 +220,7 @@ const Detailbox = ({ search, activeTab, contacts, setContacts }) => {
             <h2 className="text-xl font-bold mb-4">Contact Details</h2>
             {viewcontact.image && (
               <img
-                src={`http://localhost:5000/uploads/${viewcontact.image}`}
+                src={`${API_URL}/uploads/${viewcontact.image}`}
                 className="rounded-full w-24 h-24 mb-4 mx-auto"
               />
             )}
