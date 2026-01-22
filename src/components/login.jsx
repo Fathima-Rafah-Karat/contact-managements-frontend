@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { IoIosContacts } from "react-icons/io";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const LoginDialog = ({ onLogin }) => {
   const [activeTab, setActiveTab] = useState("signin");
   const [email, setEmail] = useState("");
@@ -18,9 +19,9 @@ const LoginDialog = ({ onLogin }) => {
 
     try {
       const endpoint =
-        activeTab === "signin"
-          ? "http://localhost:5000/api/auth/signin"
-          : "http://localhost:5000/api/auth/signup";
+activeTab === "signin"
+          ? `${API_URL}/api/auth/signin`
+          : `${API_URL}/api/auth/signup`;
 
       const res = await fetch(endpoint, {
         method: "POST",
